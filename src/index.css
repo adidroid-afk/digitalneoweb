@@ -10,8 +10,10 @@ html {
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
+  background: #0a0a0a;
 }
 
+/* Custom animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -23,12 +25,12 @@ body {
   }
 }
 
-@keyframes pulse-slow {
+@keyframes pulse-glow {
   0%, 100% {
-    opacity: 1;
+    box-shadow: 0 0 20px rgba(0, 214, 143, 0.3);
   }
   50% {
-    opacity: 0.5;
+    box-shadow: 0 0 40px rgba(0, 214, 143, 0.6);
   }
 }
 
@@ -36,14 +38,11 @@ body {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
 }
 
-.gradient-green {
-  background: linear-gradient(135deg, #00d68f 0%, #00b4d8 100%);
-}
-
+/* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #00d68f, #00b4d8);
   -webkit-background-clip: text;
@@ -51,6 +50,7 @@ body {
   background-clip: text;
 }
 
+/* Glass morphism */
 .glass {
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
@@ -60,4 +60,9 @@ body {
 .glass:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(0, 214, 143, 0.3);
+}
+
+/* Hero overlay */
+.hero-overlay {
+  background: linear-gradient(180deg, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.9) 50%, rgba(10,10,10,1) 100%);
 }
