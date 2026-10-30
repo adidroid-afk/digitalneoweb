@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cellebrite UFED 4PC - Detail Produk | Digital Neo Sistem</title>
-    <meta name="description" content="Panduan detail Cellebrite UFED 4PC: fitur ekstraksi mobile forensik, jenis ekstraksi (logical, filesystem, physical, chip-off), alur kerja, contoh kasus, dan pelatihan hands-on bersama PT Digital Neo Sistem.">
+    <meta name="description" content="Cellebrite UFED 4PC (Cellebrite): pengertian, fitur, alur kerja, contoh kasus hands-on, spesifikasi, dan pengadaan/pelatihan bersama PT Digital Neo Sistem.">
+    <meta property="og:title" content="Cellebrite UFED 4PC - Detail Produk">
+    <meta property="og:description" content="Cellebrite UFED 4PC (Cellebrite): pengertian, fitur, alur kerja, contoh kasus hands-on, spesifikasi, dan pengadaan/pelatihan bersama PT Digital Neo Sistem.">
+    <meta property="og:type" content="article">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,127 +21,71 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        * {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: #0a0a0a; color: white; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background: #0a0a0a;
-            color: white;
-        }
-
-        /* Gradient text */
         .gradient-text {
             background: linear-gradient(135deg, #00d68f, #00b4d8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        /* Glass morphism */
         .glass {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
+        .glass:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(0, 214, 143, 0.3); }
+        .gradient-btn { background: linear-gradient(135deg, #00d68f, #00b4d8); }
+        .gradient-btn:hover { opacity: 0.9; }
 
-        .glass:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(0, 214, 143, 0.3);
-        }
-
-        /* Gradient button */
-        .gradient-btn {
-            background: linear-gradient(135deg, #00d68f, #00b4d8);
-        }
-
-        .gradient-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* Animations */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
 
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        /* Grid pattern */
         .grid-pattern {
             background-image:
                 linear-gradient(rgba(0,214,143,0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0,214,143,0.05) 1px, transparent 1px);
             background-size: 80px 80px;
         }
+        .mobile-menu { display: none; }
+        .mobile-menu.active { display: block; }
 
-        /* Mobile menu */
-        .mobile-menu {
-            display: none;
-        }
-
-        .mobile-menu.active {
-            display: block;
-        }
-
-        /* Code / terminal block */
         .code-block {
             background: #0d1117;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+            font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
             font-size: 0.78rem;
-            line-height: 1.6;
+            line-height: 1.65;
+            white-space: pre;
+            overflow-x: auto;
         }
-
-        /* Table styling */
         .spec-table th {
             background: rgba(0, 214, 143, 0.08);
             color: #00d68f;
             text-align: left;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-
-        .spec-table td, .spec-table th {
-            padding: 0.7rem 0.9rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        }
-
-        .spec-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        /* Numbered step circle */
+        .spec-table td, .spec-table th { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .spec-table tr:last-child td { border-bottom: none; }
         .step-num {
-            width: 2.5rem;
-            height: 2.5rem;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            flex-shrink: 0;
-            background: linear-gradient(135deg, #00d68f, #00b4d8);
-            color: #fff;
+            width: 2.4rem; height: 2.4rem; border-radius: 9999px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0;
+            background: linear-gradient(135deg, #00d68f, #00b4d8); color: #fff;
         }
+        .toc-link { display:block; padding:.5rem .75rem; border-radius:.5rem; font-size:.8rem; color:#9ca3af; border:1px solid rgba(255,255,255,.07); }
+        .toc-link:hover { color:#fff; border-color:rgba(0,214,143,.4); background:rgba(0,214,143,.06); }
     </style>
 </head>
 <body class="bg-[#0a0a0a] text-white">
-
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-white/5">
         <div class="max-w-6xl mx-auto px-4 sm:px-6">
@@ -160,7 +107,7 @@
                     <a href="index.html#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
                     <a href="index.html#training" class="text-sm text-gray-400 hover:text-white transition-colors">Training</a>
                     <a href="index.html#contact" class="text-sm text-gray-400 hover:text-white transition-colors">Contact</a>
-                    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20Cellebrite%20UFED%204PC.%20Mohon%20info%20harga%20%26%20penawarannya." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center space-x-1.5" style="background:#25D366">
+                    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%3A%20Cellebrite%20UFED%204PC%20%28Cellebrite%29.%20Mohon%20info%20harga%20%26%20penawarannya." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center space-x-1.5" style="background:#25D366">
                         <i data-lucide="message-circle" class="w-4 h-4"></i><span>Minta Penawaran</span>
                     </a>
                 </div>
@@ -174,17 +121,16 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu md:hidden bg-[#111] border-t border-white/5">
             <div class="px-4 py-4 space-y-3">
-                <a href="index.html" class="block text-white text-sm font-semibold">← Kembali ke Halaman Utama</a>
+                <a href="index.html" class="block text-white text-sm font-semibold">&larr; Kembali ke Halaman Utama</a>
                 <a href="index.html#produk" class="block text-gray-300 text-sm">Produk</a>
                 <a href="index.html#training" class="block text-gray-300 text-sm">Training</a>
                 <a href="index.html#contact" class="block text-gray-300 text-sm">Contact</a>
-                <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20Cellebrite%20UFED%204PC" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg text-white text-sm font-medium text-center" style="background:#25D366">
+                <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Cellebrite%20UFED%204PC" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg text-white text-sm font-medium text-center" style="background:#25D366">
                     Minta Penawaran via WhatsApp
                 </a>
             </div>
         </div>
     </nav>
-
     <!-- Hero / Page Header -->
     <section class="pt-28 pb-12 relative overflow-hidden">
         <div class="absolute inset-0">
@@ -195,7 +141,7 @@
 
         <div class="relative max-w-6xl mx-auto px-4">
             <!-- Breadcrumb -->
-            <div class="flex items-center space-x-2 text-xs text-gray-500 mb-8">
+            <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-8">
                 <a href="index.html" class="hover:text-[#00d68f] transition-colors flex items-center space-x-1">
                     <i data-lucide="home" class="w-3.5 h-3.5"></i><span>Beranda</span>
                 </a>
@@ -209,25 +155,24 @@
 
             <div class="animate-fade-in-up">
                 <div class="flex flex-wrap items-center gap-3 mb-4">
-                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Cellebrite</span>
-                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10">Mobile Forensics</span>
-                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10">Extraction &amp; Decoding</span>
+                    <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">
+                        <i data-lucide="smartphone" class="w-3.5 h-3.5"></i><span>Cellebrite</span>
+                    </span>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10">Mobile Forensic</span>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10">Software + perangkat akuisisi mobile (ekosistem UFED)</span>
                 </div>
 
                 <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-                    <span class="text-white">Cellebrite </span><span class="gradient-text">UFED 4PC</span>
+                    <span class="text-white">Cellebrite UFED 4PC</span>
                 </h1>
 
                 <p class="text-lg text-gray-400 max-w-3xl leading-relaxed mb-8">
-                    <strong class="text-white">Universal Forensic Extraction Device for PC (UFED 4PC)</strong> adalah
-                    software standar industri dari Cellebrite untuk <strong class="text-white">akuisisi (ekstraksi) bukti digital
-                    dari perangkat mobile</strong> — Android, iOS, KaiOS, hingga feature phone — langsung dari komputer forensik Anda,
-                    dengan hasil yang <em>forensically sound</em> dan dapat dipertanggungjawabkan di pengadilan.
+                    UFED 4PC adalah software ekstraksi standar industri dari Cellebrite untuk menarik data dari smartphone &amp; tablet (Android, iOS, KaiOS, feature phone) secara forensically sound langsung dari komputer forensik Anda.
                 </p>
 
                 <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20Cellebrite%20UFED%204PC.%20Mohon%20info%20harga%20%26%20penawarannya." target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg text-white font-semibold" style="background:#25D366">
-                        <i data-lucide="send" class="w-4 h-4"></i><span>Minta Harga UFED 4PC</span>
+                    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%3A%20Cellebrite%20UFED%204PC%20%28Cellebrite%29.%20Mohon%20info%20harga%20%26%20penawarannya." target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg text-white font-semibold" style="background:#25D366">
+                        <i data-lucide="send" class="w-4 h-4"></i><span>Minta Harga Cellebrite UFED 4PC</span>
                     </a>
                     <a href="index.html#training" class="inline-flex items-center space-x-2 px-6 py-3 gradient-btn rounded-lg text-white font-medium">
                         <i data-lucide="graduation-cap" class="w-4 h-4"></i><span>Jadwal Pelatihan Hands-on</span>
@@ -239,469 +184,432 @@
             </div>
         </div>
     </section>
-
-    <!-- Overview Section -->
+    <!-- Overview -->
     <section id="overview" class="py-16 bg-[#111]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="grid lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2">
                     <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
-                        Apa itu <span class="gradient-text">UFED 4PC?</span>
+                        Apa itu <span class="gradient-text">Cellebrite UFED 4PC?</span>
                     </h2>
                     <div class="space-y-4 text-gray-400 leading-relaxed">
+                        <p><strong class="text-white">Cellebrite UFED 4PC</strong> adalah software + perangkat akuisisi mobile (ekosistem UFED) dari <strong class="text-white">Cellebrite</strong> yang digunakan dalam proses investigasi digital forensik.</p>
+                        <p>UFED 4PC adalah software ekstraksi standar industri dari Cellebrite untuk menarik data dari smartphone &amp; tablet (Android, iOS, KaiOS, feature phone) secara forensically sound langsung dari komputer forensik Anda.</p>
                         <p>
-                            UFED 4PC adalah komponen <em>extraction</em> dari ekosistem Cellebrite yang berjalan di atas
-                            Windows. Tugasnya satu: <strong class="text-white">menarik data sebanyak mungkin dari perangkat mobile
-                            secara aman, terdokumentasi, dan dapat diverifikasi</strong>. Tool ini digunakan laboratorium forensik,
-                            penegak hukum, tim IR korporasi, dan konsultan digital forensik di seluruh dunia sebagai alat utama
-                            akuisisi mobile.
+                            Dalam praktik sehari-hari, tool ini dipakai oleh laboratorium forensik, penegak hukum, tim
+                            <em>incident response</em> korporasi, konsultan digital forensik, serta penyidik internal untuk
+                            mempercepat pekerjaan akuisisi dan analisa bukti tanpa mengorbankan integritas data.
+                            Penggunaan yang tepat selalu diawali dengan penilaian kondisi barang bukti, pemilihan metode
+                            yang paling kecil dampaknya (<em>minimally invasive</em>), dan dokumentasi hasil yang rapi.
                         </p>
                         <p>
-                            UFED 4PC mendukung ratusan ribu model perangkat (Android, iOS/iPadOS, KaiOS, BlackBerry legacy,
-                            feature phone) dengan berbagai metode koneksi: USB, kabel UART/JTAG, mode EDL/QFIL pada chipset
-                            Qualcomm, Download Mode Samsung, hingga prosedur <em>chip-off</em> melalui kombinasi hardware
-                            ISP/FSK (Firewall Service Kit).
-                        </p>
-                        <p>
-                            Hasil ekstraksi berupa file bertanda hash (MD5/SHA) yang kemudian dapat dianalisis lebih lanjut
-                            menggunakan pasangan utamanya, yaitu <strong class="text-white">Cellebrite Physical Analyzer</strong>,
-                            untuk decoding aplikasi, pemulihan artefak terhapus, visualisasi timeline, dan pembuatan laporan ahli.
+                            Kami menyediakan Cellebrite UFED 4PC beserta lisensi/subscription, pendampingan instalasi, pelatihan
+                            hands-on berbasis studi kasus, hingga dukungan lanjutan saat tool digunakan pada perkara nyata.
                         </p>
                     </div>
 
-                    <div class="mt-8 glass rounded-xl p-6 border-l-4 !border-l-[#00d68f]">
-                        <h3 class="text-white font-bold mb-2 flex items-center space-x-2">
-                            <i data-lucide="lightbulb" class="w-5 h-5 text-[#00d68f]"></i>
-                            <span>Ekosistem Cellebrite terkait</span>
+                    <div class="mt-8 glass rounded-xl p-6">
+                        <h3 class="text-white font-bold mb-4 flex items-center space-x-2">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-[#00d68f]"></i>
+                            <span>Fitur Utama Cellebrite UFED 4PC</span>
                         </h3>
-                        <ul class="space-y-2 text-sm text-gray-400">
-                            <li><strong class="text-gray-200">UFED 4PC</strong> — software ekstraksi di komputer forensik (halaman ini).</li>
-                            <li><strong class="text-gray-200">Physical Analyzer (PA)</strong> — software analisa &amp; decoding hasil ekstraksi.</li>
-                            <li><strong class="text-gray-200">Inspector / Premium Toolkit</strong> — paket lisensi lengkap extraction + analysis.</li>
-                            <li><strong class="text-gray-200">Passcode Unlock &amp; Advanced Package</strong> — opsional, untuk bypass lock screen &amp; physical/chip-off.</li>
-                            <li><strong class="text-gray-200">Cellebrite Responder</strong> — versi cepat untuk first responder di TKP.</li>
+                        <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-400">
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Ekstraksi logical, enhanced logical/filesystem, physical, hingga image penuh pada device yang didukung</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Mendukung ratusan ribu model perangkat dengan daftar dukungan yang rutin diperbarui</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Metode koneksi alternatif untuk device rusak: EDL/QFIL, Download Mode, UART/JTAG, ISP chip-off</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Verifikasi integritas otomatis dengan hash MD5 &amp; SHA-256 pada setiap proses ekstraksi</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Dukungan passcode unlock &amp; bypass lock screen sesuai cakupan model dan versi OS</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Enkripsi hasil ekstraksi dan proteksi akses berbasis lisensi/user</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Integrasi satu klik ke Cellebrite Physical Analyzer untuk decoding, timeline, dan pelaporan</span>
+                            </li>
                         </ul>
                     </div>
+
+                    <div class="mt-6 glass rounded-xl p-6 border-l-4 !border-l-[#00b4d8]">
+                        <h3 class="text-white font-bold mb-2 flex items-center space-x-2">
+                            <i data-lucide="info" class="w-5 h-5 text-[#00b4d8]"></i>
+                            <span>Catatan penting</span>
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Deskripsi, spesifikasi, dan contoh pada halaman ini bersifat edukatif untuk membantu pemilihan alat. Dukungan model perangkat, versi, fitur, serta harga mengikuti rilis resmi vendor — silakan hubungi kami untuk konfirmasi terkini.</p>
+                    </div>
                 </div>
+
                 <div class="space-y-4">
                     <div class="glass rounded-xl p-5">
                         <div class="flex items-center space-x-3 mb-2">
                             <i data-lucide="smartphone" class="w-5 h-5 text-[#00d68f]"></i>
-                            <h4 class="text-white font-semibold text-sm">Platform Didukung</h4>
+                            <h4 class="text-white font-semibold text-sm">Tipe produk</h4>
                         </div>
-                        <p class="text-gray-400 text-xs leading-relaxed">Android, iOS/iPadOS, KaiOS, BlackBerry &amp; Symbian legacy, feature phone — ratusan ribu model.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Software + perangkat akuisisi mobile (ekosistem UFED)</p>
                     </div>
                     <div class="glass rounded-xl p-5">
                         <div class="flex items-center space-x-3 mb-2">
-                            <i data-lucide="lock" class="w-5 h-5 text-[#00d68f]"></i>
-                            <h4 class="text-white font-semibold text-sm">Bypass Lock Screen</h4>
+                            <i data-lucide="unlock" class="w-5 h-5 text-[#00d68f]"></i>
+                            <h4 class="text-white font-semibold text-sm">Kategori</h4>
                         </div>
-                        <p class="text-gray-400 text-xs leading-relaxed">Opsi Passcode Unlock untuk membuka PIN/pattern/Face ID tertentu sesuai dukungan model &amp; OS.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Mobile Forensic</p>
                     </div>
                     <div class="glass rounded-xl p-5">
                         <div class="flex items-center space-x-3 mb-2">
-                            <i data-lucide="file-check-2" class="w-5 h-5 text-[#00d68f]"></i>
-                            <h4 class="text-white font-semibold text-sm">Forensically Sound</h4>
+                            <i data-lucide="plug" class="w-5 h-5 text-[#00d68f]"></i>
+                            <h4 class="text-white font-semibold text-sm">Vendor</h4>
                         </div>
-                        <p class="text-gray-400 text-xs leading-relaxed">Write-safe proses ekstraksi, log aktivitas lengkap, dan hash verifikasi otomatis untuk chain of custody.</p>
-                    </div>
-                    <div class="glass rounded-xl p-5">
-                        <div class="flex items-center space-x-3 mb-2">
-                            <i data-lucide="refresh-cw" class="w-5 h-5 text-[#00d68f]"></i>
-                            <h4 class="text-white font-semibold text-sm">Update Berkala</h4>
-                        </div>
-                        <p class="text-gray-400 text-xs leading-relaxed">Database device &amp; decoder diperbarui rutin mengikuti rilis HP dan aplikasi terbaru.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Cellebrite (Israel)</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Extraction Types Section -->
-    <section id="ekstraksi" class="py-16 bg-[#0a0a0a]">
+    <!-- Alur kerja -->
+    <section id="alur-kerja" class="py-16 bg-[#0a0a0a]">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20 mb-4">Jenis Ekstraksi</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Tingkat Ekstraksi <span class="gradient-text">UFED 4PC</span></h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-sm">Semakin rendah levelnya, semakin mudah namun semakin sedikit datanya. Analis selalu memulai dari yang paling aman, lalu naik level bila bukti belum cukup.</p>
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Alur Kerja <span class="gradient-text">Cellebrite UFED 4PC</span></h2>
+                <p class="text-gray-500 text-sm max-w-2xl mx-auto">Urutan pemakaian yang umum diterapkan di laboratorium agar hasil tetap <em>forensically sound</em> dan dapat dipertanggungjawabkan.</p>
             </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-                <div class="glass rounded-xl p-6">
-                    <div class="w-11 h-11 rounded-lg bg-[#00d68f]/10 border border-[#00d68f]/20 flex items-center justify-center mb-4">
-                        <i data-lucide="download" class="w-5 h-5 text-[#00d68f]"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-1">Logical</h3>
-                    <p class="text-[#00b4d8] text-xs font-medium mb-3">Paling dasar &bull; tanpa root</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">Mengambil data aktif milik pengguna: kontak, SMS, log panggilan, galeri, sebagian data aplikasi melalui API backup/osync.</p>
-                </div>
-                <div class="glass rounded-xl p-6">
-                    <div class="w-11 h-11 rounded-lg bg-[#00d68f]/10 border border-[#00d68f]/20 flex items-center justify-center mb-4">
-                        <i data-lucide="folder-tree" class="w-5 h-5 text-[#00d68f]"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-1">Enhanced Logical / Filesystem</h3>
-                    <p class="text-[#00b4d8] text-xs font-medium mb-3">Full-file-system image</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">Menarik partisi userdata/APPS beserta struktur file — termasuk database aplikasi (WhatsApp, Telegram, LINE) yang tidak terlihat di logical biasa.</p>
-                </div>
-                <div class="glass rounded-xl p-6">
-                    <div class="w-11 h-11 rounded-lg bg-[#00b4d8]/10 border border-[#00b4d8]/20 flex items-center justify-center mb-4">
-                        <i data-lucide="hard-drive" class="w-5 h-5 text-[#00b4d8]"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-1">Physical</h3>
-                    <p class="text-[#00b4d8] text-xs font-medium mb-3">Bit-for-bit dump</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">Dump penuh memori flash (raw image) sehingga dimungkinkan recovery data terhapus, carving SQLite journal/WAL, dan analisis sisa file.</p>
-                </div>
-                <div class="glass rounded-xl p-6">
-                    <div class="w-11 h-11 rounded-lg bg-[#00b4d8]/10 border border-[#00b4d8]/20 flex items-center justify-center mb-4">
-                        <i data-lucide="cpu" class="w-5 h-5 text-[#00b4d8]"></i>
-                    </div>
-                    <h3 class="text-white font-bold mb-1">Chip-off / ISP / JTAG</h3>
-                    <p class="text-[#00b4d8] text-xs font-medium mb-3">Level hardware</p>
-                    <p class="text-gray-400 text-sm leading-relaxed">Untuk device rusak atau terenkripsi ketat: IC memori dibaca langsung (dengan dukungan hardware Fernico/FSK), lalu di-reconstruct di Physical Analyzer.</p>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl mx-auto">
+            <div class="flex items-start space-x-4">
+                <div class="step-num">1</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Isolasi device dari jaringan (mode pesawat/offline atau Faraday bag) agar data tidak berubah atau kena remote wipe.</p>
                 </div>
             </div>
-
-            <!-- Comparison table -->
-            <div class="mt-10 glass rounded-xl overflow-x-auto">
-                <table class="spec-table w-full text-sm text-gray-300 min-w-[640px]">
-                    <thead>
-                        <tr>
-                            <th>Level</th>
-                            <th>Data yang diperoleh</th>
-                            <th>Data terhapus</th>
-                            <th>Prasyarat</th>
-                            <th>Risiko / Catatan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="font-semibold text-white">Logical</td>
-                            <td>Kontak, SMS, call log, foto, backup app</td>
-                            <td class="text-gray-500">Tidak</td>
-                            <td>USB debugging / trust saja</td>
-                            <td>Aman, cepat; cocok untuk triase</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-white">Filesystem</td>
-                            <td>+ database aplikasi, file tersembunyi</td>
-                            <td class="text-gray-500">Sebagian (journal/WAL)</td>
-                            <td>Tergantung model/OS</td>
-                            <td>Sering cukup untuk kasus chat &amp; medsos</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-white">Physical</td>
-                            <td>Raw image seluruh partisi</td>
-                            <td class="text-[#00d68f]">Ya (carving/recovery)</td>
-                            <td>Advanced package / exploit support</td>
-                            <td>Waktu lama; butuh storage besar</td>
-                        </tr>
-                        <tr>
-                            <td class="font-semibold text-white">Chip-off</td>
-                            <td>Seluruh konten IC memori</td>
-                            <td class="text-[#00d68f]">Ya (perlu reconstruct)</td>
-                            <td>Keahlian hardware + ISP box</td>
-                            <td>Destructive; dokumentasi wajib</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">2</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Colokkan device ke komputer forensik via USB; jalankan UFED 4PC dan lakukan identifikasi model &amp; status device.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">3</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Pilih tingkat ekstraksi yang dibutuhkan (logical → filesystem → physical) beserta metode koneksi bila device rusak.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">4</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Jalankan ekstraksi, simpan paket hasil (.extr), lalu verifikasi nilai hash MD5/SHA-256 dan dokumentasikan dalam formulir chain of custody.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">5</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Analisa hasil di Cellebrite Physical Analyzer: decode aplikasi, artefak terhapus, timeline, visualisasi, dan laporan ahli.</p>
+                </div>
+            </div>
+            </div>
+            <div class="mt-10 max-w-4xl mx-auto glass rounded-xl p-5">
+                <div class="flex items-start space-x-3">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Prinsip yang tidak boleh dilewatkan: <strong class="text-white">selalu kerjakan pada salinan (image), bukan barang bukti asli</strong>,
+                        gunakan write blocker saat mengakses media, verifikasi hash sebelum dan sesudah proses, serta catat setiap tindakan dalam formulir
+                        <em>chain of custody</em>.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
-
-    <!-- Workflow Section -->
-    <section id="alur-kerja" class="py-16 bg-[#111]">
+    <!-- Contoh penggunaan -->
+    <section id="contoh" class="py-16 bg-[#111]">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20 mb-4">Alur Kerja</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Cara Kerja <span class="gradient-text">UFED 4PC</span> (Step-by-Step)</h2>
+            <div class="text-center mb-10">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20 mb-4">Studi Kasus Hands-on</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Contoh Penggunaan <span class="gradient-text">Cellebrite UFED 4PC</span></h2>
+                <p class="text-gray-500 text-sm max-w-2xl mx-auto">Dua skenario berikut menggambarkan cara tool ini dipakai pada investigasi nyata — mulai dari persiapan barang bukti sampai hasil yang dilaporkan ke penyidik.</p>
             </div>
+            <div class="space-y-6">
+            <div class="glass rounded-2xl p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg gradient-btn text-white text-sm font-bold">1</span>
+                    <h3 class="text-white font-bold text-lg">Chat WhatsApp yang telah dihapus</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5"><strong class="text-gray-200">Skenario:</strong> Sebuah kasus penipuan online; pelaku menghapus riwayat percakapan WhatsApp sebelum ponselnya diamankan.</p>
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Langkah Pengerjaan</p>
+                        <ol class="space-y-2 text-xs text-gray-400 leading-relaxed">
+<li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">1.</span><span>Amankan ponsel Android, aktifkan mode pesawat, lalu ekstrak logical + filesystem dengan UFED 4PC.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">2.</span><span>Buka paket .extr di Physical Analyzer dan pilih decoder WhatsApp (termasuk recovery artefak terhapus).</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">3.</span><span>Saring pesan berdasarkan kata kunci transfer bank, filter periode waktu, dan bangun timeline percakapan.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">4.</span><span>Ekspor laporan bagian chat sebagai PDF/XLSX disertai nilai hash file sumber.</span></li>                        </ol>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Contoh Output / Laporan (ilustrasi)</p>
+                        <div class="code-block rounded-xl p-4 text-gray-300">[UFED 4PC] Device: Samsung SM-A515F (Android 12)
+Mode: Logical + Enhanced Logical (Filesystem)
+Progress: 100% | Duration: 00:11:42
+Output: CASE-2026-014_A515F_2026-02-11.extr
+MD5   : 7f3c9a...e21b
+SHA256: a1d5be...9cc4
+Status: SUCCESS (integrity verified)
 
-            <div class="space-y-5 max-w-3xl mx-auto">
-                <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                    <div class="step-num">1</div>
-                    <div>
-                        <h3 class="text-white font-bold mb-1">Persiapan &amp; isolasi device</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Catu dayakan device, matikan risiko remote wipe: masukkan ke Faraday bag OFFGRID atau aktifkan airplane mode (cek sinyal tetap padam). Dokumentasikan kondisi awal + foto.</p>
+[Cellebrite Physical Analyzer]
+Decoder: WhatsApp Messenger (db.crypt14 -&gt; messages.db)
+Recovered messages : 4.182 (deleted: 317)
+Chats matched      : &#x27;transfer&#x27;, &#x27;rekber&#x27; -&gt; 214 pesan
+First / Last       : 2025-11-03 08:12 .. 2026-02-10 23:41
+Export             : CASE-2026-014_whatsapp-chats.pdf</div>
                     </div>
                 </div>
-                <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                    <div class="step-num">2</div>
+            </div>
+            <div class="glass rounded-2xl p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg gradient-btn text-white text-sm font-bold">2</span>
+                    <h3 class="text-white font-bold text-lg">iPhone terkunci + pembuktian lokasi</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5"><strong class="text-gray-200">Skenario:</strong> Ponsel iPhone ditemukan terkunci passcode; penyidik perlu membuktikan keberadaan pemilik pada jam tertentu.</p>
+                <div class="grid lg:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="text-white font-bold mb-1">Identifikasi perangkat</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Sambungkan via USB ke komputer forensik. UFED 4PC mendeteksi merk, model, OS version, dan menawarkan metode ekstraksi yang didukung device tersebut.</p>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Langkah Pengerjaan</p>
+                        <ol class="space-y-2 text-xs text-gray-400 leading-relaxed">
+<li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">1.</span><span>Hubungkan iPhone ke komputer forensik, lakukan identifikasi (versi iOS, UDID) lewat UFED 4PC.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">2.</span><span>Aplikasikan opsi passcode unlock sesuai dukungan model/iOS, lalu jalankan ekstraksi advanced logical.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">3.</span><span>Decode foto (EXIF geotag), Maps history, Kalender, dan log lokasi di Physical Analyzer.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">4.</span><span>Susun timeline lokasi per jam dan bandingkan dengan alibi tersangka; buat laporan visual.</span></li>                        </ol>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Contoh Output / Laporan (ilustrasi)</p>
+                        <div class="code-block rounded-xl p-4 text-gray-300">[UFED 4PC] Device: iPhone XR (iOS 15.7)
+Unlock    : Passcode Unlock (supported: yes)
+Extraction: Advanced Logical
+Output: CASE-2026-021_IPHONEXR.extr  SHA256: 3ee1a0...7bd9
+
+[Physical Analyzer - Timeline Lokasi]
+2026-02-09 18:04  Foto IMG_0912.HEIC  -6.914, 107.604 (Jakarta Selatan)
+2026-02-09 18:31  Maps History        -6.208, 106.846 (Depok)
+2026-02-09 19:02  Calendar Event      &#x27;Meeting - GTB Cibubur&#x27;
+Alibi check: pemilik BUKAN berada di lokasi klaim (Bandung).</div>
                     </div>
                 </div>
-                <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                    <div class="step-num">3</div>
+            </div>
+            <div class="glass rounded-2xl p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg gradient-btn text-white text-sm font-bold">3</span>
+                    <h3 class="text-white font-bold text-lg">Ponsel fisik rusak (layar mati) — jalur ISP/chip-off</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5"><strong class="text-gray-200">Skenario:</strong> Device MediaTek jatuh dan layar mati total; data harus tetap diambil tanpa merusak flash.</p>
+                <div class="grid lg:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="text-white font-bold mb-1">Pilih metode &amp; jalankan ekstraksi</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Pilih Logical → Filesystem → Physical sesuai kebutuhan kasus. Bila device terkunci, gunakan opsi passcode unlock bila tersedia. Ikuti prompt pada device (trust, enter recovery, dll.).</p>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Langkah Pengerjaan</p>
+                        <ol class="space-y-2 text-xs text-gray-400 leading-relaxed">
+<li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">1.</span><span>Inspeksi hardware; siapkan jalur koneksi ISP (In-System Programming) atau modul Fernico ZRT3.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">2.</span><span>Jalankan prosedur short-point/EDL sesuai dokumen dukungan Cellebrite untuk model tersebut.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">3.</span><span>Ekstraksi physical image flash (eMMC/UFS) melalui UFED 4PC + hardware pendukung.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">4.</span><span>Verifikasi hash image, lalu parse filesystem dan artefak aplikasi di Physical Analyzer.</span></li>                        </ol>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Contoh Output / Laporan (ilustrasi)</p>
+                        <div class="code-block rounded-xl p-4 text-gray-300">[UFED 4PC + ISP Kit] Target: eMMC 32GB (MediaTek MT6765)
+Connection: ISP short-point (bootrom handshake OK)
+Read blocks: 62.914.560 / 62.914.560 (100%)
+Image: CASE-2026-033_emmc.img (32,0 GiB)
+MD5   : 0c44a7...f1de
+SHA256: b7aa19...5e02
+Parse: ext4 partitions -&gt; /data, /cache, /sdcard
+Artifacts: contacts 1.204 | SMS 8.530 | photos 12.447</div>
                     </div>
                 </div>
-                <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                    <div class="step-num">4</div>
+            </div>
+            <div class="glass rounded-2xl p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg gradient-btn text-white text-sm font-bold">4</span>
+                    <h3 class="text-white font-bold text-lg">Investigasi internal korporasi (kebocoran data)</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5"><strong class="text-gray-200">Skenario:</strong> Tim IR perusahaan perlu memeriksa ponsel karyawan yang diduga mengirim data rahasia ke kompetitor.</p>
+                <div class="grid lg:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="text-white font-bold mb-1">Verifikasi hash &amp; simpan bukti</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">UFED menghasilkan file ekstraksi (.ufd/.extr) + report + nilai hash. Simpan di media bukti ber-encryption, catat dalam formulir chain of custody.</p>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Langkah Pengerjaan</p>
+                        <ol class="space-y-2 text-xs text-gray-400 leading-relaxed">
+<li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">1.</span><span>Dengan persetujuan tertulis &amp; kebijakan HR, amankan device dan lakukan ekstraksi logical.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">2.</span><span>Decode email mobile, WhatsApp/Telegram, browser history, dan aplikasi cloud storage.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">3.</span><span>Cari indikator transfer file (nama dokumen, tautan cloud, tangkapan layar).</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">4.</span><span>Susun laporan ringkas untuk manajemen disertai rantai penyimpanan bukti yang rapi.</span></li>                        </ol>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Contoh Output / Laporan (ilustrasi)</p>
+                        <div class="code-block rounded-xl p-4 text-gray-300">Scope: Internal investigation (HR authorization #IR-2026-07)
+Extraction: Logical (no password bypass required)
+Decoded sources:
+  Mail (Gmail)   : 2.114 item, 3 lampiran &#x27;Proposal-X.pdf&#x27;
+  Telegram       : chat &#x27;rekan-A&#x27; 812 pesan, 27 file
+  Browser        : drive.google.com upload 2026-02-05 10:12
+Findings: 4 dokumen classified terunggah ke akun Google pribadi.
+Report: IR-2026-07_summary.pdf (hash terlampir)</div>
                     </div>
                 </div>
-                <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                    <div class="step-num">5</div>
-                    <div>
-                        <h3 class="text-white font-bold mb-1">Analisa di Physical Analyzer</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Buka hasil ekstraksi di Cellebrite Physical Analyzer: decoding chat, pulih data terhapus, artifact viewer, timeline, geolocation map, keyword search, hingga ekspor laporan siap sidang.</p>
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
     </section>
-
-    <!-- Example Section -->
-    <section id="contoh" class="py-16 bg-[#0a0a0a]">
+    <!-- Spesifikasi -->
+    <section id="spesifikasi" class="py-16 bg-[#0a0a0a]">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20 mb-4">Contoh Penggunaan</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Contoh Kasus <span class="gradient-text">Hands-on</span></h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-sm">Ilustrasi skenario nyata yang biasa dipraktikkan pada pelatihan Mobile Forensics Digital Neo Sistem.</p>
-            </div>
-
-            <div class="grid lg:grid-cols-2 gap-6">
-                <!-- Case 1 -->
-                <div class="glass rounded-xl p-6">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg gradient-btn flex items-center justify-center">
-                            <i data-lucide="message-square-more" class="w-5 h-5 text-white"></i>
-                        </div>
-                        <h3 class="text-white font-bold">Kasus 1 — Chat WhatsApp yang Dihapus</h3>
+            <div class="grid lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-3">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Spesifikasi &amp; <span class="gradient-text">Kemampuan</span></h2>
+                    <p class="text-gray-500 text-sm mb-6">Ringkasan kemampuan Cellebrite UFED 4PC yang paling relevan saat memilih alat untuk kebutuhan lab Anda.</p>
+                    <div class="glass rounded-xl overflow-hidden">
+                        <table class="spec-table w-full">
+                            <thead><tr><th>Aspek</th><th>Keterangan</th></tr></thead>
+                            <tbody>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Vendor</td><td class="text-gray-400 text-xs">Cellebrite (Israel)</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Bentuk produk</td><td class="text-gray-400 text-xs">Software lisensi subscription (opsional hardware UFED Touch 2 / UFED Premium kit)</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">OS host</td><td class="text-gray-400 text-xs">Windows 10/11 64-bit</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Target device</td><td class="text-gray-400 text-xs">Android, iOS/iPadOS, KaiOS, BlackBerry &amp; Symbian legacy, feature phone</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Koneksi</td><td class="text-gray-400 text-xs">USB, UART/JTAG, EDL/QFIL (Qualcomm), Download Mode Samsung, ISP/Firewall Service Kit</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Output file</td><td class="text-gray-400 text-xs">.extr / extraction package bertanda hash MD5 &amp; SHA-256</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Format laporan</td><td class="text-gray-400 text-xs">PDF, HTML, XLSX, dan ekspor ke Physical Analyzer</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Bahasa antarmuka</td><td class="text-gray-400 text-xs">Multi-bahasa (tergantung versi rilis)</td></tr>
+                                        </tbody>
+                        </table>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Seorang karyawan diduga membocorkan rahasia dagang lalu <em>menghapus</em> percakapan WhatsApp-nya.
-                        Ponsel Android (Snapdragon, sudah di-reset factory oleh pemilik) disita dalam keadaan hidup.
-                    </p>
-                    <ol class="space-y-2 text-sm text-gray-400 list-decimal list-inside mb-4">
-                        <li>Isolasi sinyal → sambungkan ke UFED 4PC.</li>
-                        <li>Pilih <strong class="text-gray-200">Full File System</strong> extraction (didukung model tsb).</li>
-                        <li>Hasil: partisi <code class="text-[#00d68f]">/data</code> termasuk basis data <code class="text-[#00d68f]">msgstore.db</code> + file journal/WAL.</li>
-                        <li>Buka di Physical Analyzer → decoding otomatis pesan yang sudah dihapus dari journal.</li>
-                        <li>Temuan: rantai pesan pengirim &amp; penerima, timestamp, lampiran → ekspor PDF report + hash.</li>
-                    </ol>
-                    <div class="code-block rounded-lg p-4 text-gray-300 overflow-x-auto">
-<pre>// Ilustrasi output ringkas pada report UFED
-Device : Samsung Galaxy A54 (SM-A546B), Android 14
-Method : Full File System Extraction
-Status : SUCCESS  (duration 00:12:41)
-Output : CASE-2026-014_A546B_Extrinsic_FFS.extr
-Hash   : MD5 3f2c...9ab1 / SHA256 e8d0...77c4
-Next   : buka file .extr di Cellebrite Physical Analyzer</pre>
+
+                    <div class="mt-8 grid sm:grid-cols-2 gap-4">
+                        <div class="glass rounded-xl p-5">
+                            <h3 class="text-white font-semibold text-sm mb-2 flex items-center space-x-2"><i data-lucide="target" class="w-4 h-4 text-[#00d68f]"></i><span>Cocok Digunakan Untuk</span></h3>
+                            <ul class="space-y-2 text-xs text-gray-400">
+                                <li>&bull; Penegak hukum &amp; laboratorium forensik digital</li>
+                                <li>&bull; Tim incident response &amp; security korporasi</li>
+                                <li>&bull; Konsultan / praktisi digital forensik &amp; eDiscovery</li>
+                                <li>&bull; Investigasi internal (HR, anti-fraud, kepatuhan)</li>
+                            </ul>
+                        </div>
+                        <div class="glass rounded-xl p-5">
+                            <h3 class="text-white font-semibold text-sm mb-2 flex items-center space-x-2"><i data-lucide="package" class="w-4 h-4 text-[#00b4d8]"></i><span>Paket Pengadaan</span></h3>
+                            <ul class="space-y-2 text-xs text-gray-400">
+                                <li>&bull; Lisensi / subscription Cellebrite UFED 4PC</li>
+                                <li>&bull; Pendampingan instalasi &amp; konfigurasi awal</li>
+                                <li>&bull; Pelatihan hands-on (kelas atau onsite)</li>
+                                <li>&bull; Dukungan teknis &amp; pengadaaan aksesoris pendukung</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Case 2 -->
-                <div class="glass rounded-xl p-6">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg gradient-btn flex items-center justify-center">
-                            <i data-lucide="map-pin" class="w-5 h-5 text-white"></i>
+                <div>
+                    <div class="glass rounded-xl p-5 sticky top-24">
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Navigasi Halaman</p>
+                        <div class="space-y-2">
+                        <a href="#overview" class="toc-link">Overview</a>
+                        <a href="#alur-kerja" class="toc-link">Alur Kerja</a>
+                        <a href="#contoh" class="toc-link">Contoh Kasus</a>
+                        <a href="#spesifikasi" class="toc-link">Spesifikasi</a>
+                        <a href="#pelatihan" class="toc-link">Pelatihan</a>
+                        <a href="#related" class="toc-link">Produk Terkait</a>
                         </div>
-                        <h3 class="text-white font-bold">Kasus 2 — iPhone Terkunci &amp; Lokasi Kejadian</h3>
+                        <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20ingin%20menanyakan%20ketersediaan%20dan%20harga%20Cellebrite%20UFED%204PC%20%28Cellebrite%29." target="_blank" rel="noopener noreferrer" class="mt-5 w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg text-white text-sm font-medium" style="background:#25D366">
+                            <i data-lucide="send" class="w-4 h-4"></i><span>Tanya Harga &amp; Ketersediaan</span>
+                        </a>
                     </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        iPhone 12 (iOS 16, layar Face ID terkunci) ditemukan di TKP penipuan. Penyidik perlu bukti komunikasi
-                        dan pergerakan korban/tersangka tanpa mengubah data.
-                    </p>
-                    <ol class="space-y-2 text-sm text-gray-400 list-decimal list-inside mb-4">
-                        <li>UFED 4PC deteksi iOS 16 → tawarkan <strong class="text-gray-200">Logical + Backup extraction</strong>.</li>
-                        <li>Gunakan opsi <em>passcode unlock</em> (didukung utk rentang OS tsb) atau minta kode dari owner sesuai prosedur hukum.</li>
-                        <li>Ekstraksi meliputi Messages, Call Log, Safari, Foto, Health, dan data lokasi signifikan.</li>
-                        <li>Di Physical Analyzer: petakan artefak geolocation ke peta &amp; susun super-timeline.</li>
-                        <li>Validasi alibi: device terbukti berada di lokasi transaksi pada jam kejadian.</li>
-                    </ol>
-                    <div class="code-block rounded-lg p-4 text-gray-300 overflow-x-auto">
-<pre>// Artefak kunci hasil decoding Physical Analyzer
-[Messages] thread "RPL"   : 42 pesan (3 recovered/deleted)
-[CallLog]  +62811xxxxx    : 7 panggilan, 21.14–22.03 WIB
-[Location] Significant Places: Mall X 21.31–22.15 (cocok BTS)
-[Timeline] pesan "transfer sudah masuk" 22.07 ← korelasi mutasi bank</pre>
-                    </div>
-                </div>
-
-                <!-- Case 3 -->
-                <div class="glass rounded-xl p-6">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg gradient-btn flex items-center justify-center">
-                            <i data-lucide="search-code" class="w-5 h-5 text-white"></i>
-                        </div>
-                        <h3 class="text-white font-bold">Kasus 3 — Ponsel Rusak, Data Narkotika</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Handset Android murah (MTK) pecah LCD dan tak bisa diakses lewat USB normal, namun dicurigai berisi
-                        katalog transaksi. Dibutuhkan pendekatan tingkat lanjut.
-                    </p>
-                    <ol class="space-y-2 text-sm text-gray-400 list-decimal list-inside mb-4">
-                        <li>Triase: port USB masih berfungsi → coba <strong class="text-gray-200">Boot ROM / DA mode</strong> via UFED.</li>
-                        <li>Bila gagal: prosedur <em>chip-off/pre-amp ISP</em> baca IC eMMC (dukungan hardware Fernico ZRT3).</li>
-                        <li>Raw dump diproses kembali di UFED/PA untuk reconstruct sistem file YAFFS2/EXT4.</li>
-                        <li>Carving memulihkan gambar &amp; chat aplikasi dari blok memori yang ditandai terhapus.</li>
-                        <li>Laporan memuat metode, tool version, dan hash tiap tahap (chain of custody utuh).</li>
-                    </ol>
-                    <div class="code-block rounded-lg p-4 text-gray-300 overflow-x-auto">
-<pre>// Rantai verifikasi bukti (wajib di dokumentasi)
-stage1 raw_dump.bin     SHA256 a91f...0e33  (ISP reader v2.1)
-stage2 reconstructed    SHA256 7c40...b2aa  (PA reconstruct)
-stage3 recovered_chatdb SHA256 f02d...51ce  (SQLite recovery)
-→ setiap stage dilampirkan sebagai exhibit terpisah</pre>
-                    </div>
-                </div>
-
-                <!-- Case 4: corporate IR -->
-                <div class="glass rounded-xl p-6">
-                    <div class="flex items-center space-x-3 mb-4">
-                        <div class="w-10 h-10 rounded-lg gradient-btn flex items-center justify-center">
-                            <i data-lucide="briefcase" class="w-5 h-5 text-white"></i>
-                        </div>
-                        <h3 class="text-white font-bold">Kasus 4 — Internal Investigation Korporasi</h3>
-                    </div>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
-                        Tim investigasi internal perusahaan tambang perlu memeriksa ponsel kontraktor terkait dugaan suap,
-                        dengan tata kelola bukti yang rapi agar kuat di forum disiplin &amp; hukum.
-                    </p>
-                    <ul class="space-y-2 text-sm text-gray-400 list-disc list-inside">
-                        <li>UFED <em>Case Manager</em>: buat case, auto-naming exhibit, log examiner.</li>
-                        <li>Ekstraksi Enhanced Logical pada dua handset (Samsung &amp; Xiaomi) ±20 menit per device.</li>
-                        <li>Keyword search: nama vendor, nominal, "fee", "presentase" pada chat &amp; dokumen.</li>
-                        <li>Ekspor temuan ke report PDF/XLSX + bundle bukti ber-hash untuk pelapor.</li>
-                        <li>Hasil: percakapan &amp; invoice foto menjadi bukti utama pemberhentian &amp; proses pidana.</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Features / Specs -->
-    <section id="fitur" class="py-16 bg-[#111]">
+    <!-- Pelatihan CTA -->
+    <section id="pelatihan" class="py-16 bg-[#111]">
         <div class="max-w-6xl mx-auto px-4">
-            <div class="text-center mb-12">
-                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Fitur Unggulan &amp; <span class="gradient-text">Spesifikasi</span></h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 items-start">
-                <div class="space-y-4">
-                    <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                        <i data-lucide="layers" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <h3 class="text-white font-semibold text-sm mb-1">Multi-level extraction</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Logical, Enhanced Logical/Filesystem, Physical, sampai prosedure chip-off/ISP/JTAG dalam satu interface.</p>
+            <div class="glass rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+                <div class="absolute -top-16 -right-16 w-64 h-64 bg-[#00d68f]/10 rounded-full blur-3xl"></div>
+                <div class="relative grid lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Ingin tim Anda mahir memakai <span class="gradient-text">Cellebrite UFED 4PC</span>?</h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                            Program pelatihan <strong class="text-white">Mobile Forensic</strong> kami dirancang <em>learning by doing</em>: peserta membawa
+                            kasus nyata, mempraktikkan akuisisi sampai pelaporan, dan dibimbing menyusun chain of custody yang sah secara hukum.
+                            Tersedia kelas reguler, privat, maupun onsite di instansi/perusahaan Anda.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Hands-on study case</span>
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Sertifikat pelatihan</span>
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Kelas reguler / onsite</span>
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Pendampingan pasca-pelatihan</span>
                         </div>
                     </div>
-                    <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                        <i data-lucide="unlock" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <h3 class="text-white font-semibold text-sm mb-1">Passcode unlock support</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Opsional membuka lock screen PIN/pattern/biometrik pada kombinasi device-OS yang didukung.</p>
-                        </div>
-                    </div>
-                    <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                        <i data-lucide="cloud-download" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <h3 class="text-white font-semibold text-sm mb-1">Cloud &amp; backup extraction</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Akuisisi iCloud/Google/cloud backup &amp; service provider data dengan kredensial yang sah sesuai prosedur.</p>
-                        </div>
-                    </div>
-                    <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                        <i data-lucide="scroll-text" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <h3 class="text-white font-semibold text-sm mb-1">Audit trail &amp; hashing</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Setiap sesi terekam: waktu, metode, versi, operator, serta hash MD5/SHA untuk integritas bukti.</p>
-                        </div>
-                    </div>
-                    <div class="glass rounded-xl p-5 flex items-start space-x-4">
-                        <i data-lucide="plug" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
-                        <div>
-                            <h3 class="text-white font-semibold text-sm mb-1">Hardware pendukung</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">Bekerja optimal dgn write-blocker/UFED Touch kit, Faraday bag, ISP box (Fernico), forensic bridge Tableau.</p>
-                        </div>
+                    <div class="flex flex-col gap-3">
+                        <a href="index.html#training" class="inline-flex items-center justify-center space-x-2 px-5 py-3 gradient-btn rounded-lg text-white font-medium">
+                            <i data-lucide="graduation-cap" class="w-4 h-4"></i><span>Lihat Program Training</span>
+                        </a>
+                        <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20ingin%20menjadwalkan%20pelatihan%20penggunaan%20Cellebrite%20UFED%204PC." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-lg text-white font-medium" style="background:#25D366">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i><span>Jadwalkan Pelatihan</span>
+                        </a>
+                        <a href="index.html#produk" class="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-lg border border-white/10 text-gray-300 hover:border-[#00d68f]/40 hover:text-white transition-all font-medium">
+                            <i data-lucide="grid-3x3" class="w-4 h-4"></i><span>Kembali ke Katalog Produk</span>
+                        </a>
                     </div>
                 </div>
-
-                <div class="glass rounded-xl overflow-hidden">
-                    <table class="spec-table w-full text-sm text-gray-300">
-                        <tbody>
-                            <tr><td class="text-gray-500 w-1/2">Vendor</td><td>Cellebrite (Israel)</td></tr>
-                            <tr><td class="text-gray-500">Komponen</td><td>Software ekstraksi (bagian Inspector/Premium Toolkit)</td></tr>
-                            <tr><td class="text-gray-500">OS Host</td><td>Windows 10/11 64-bit (disarankan RAM ≥ 16 GB, SSD)</td></tr>
-                            <tr><td class="text-gray-500">Antarmuka</td><td>Wizard GUI + Case Manager; CLI utk otomasi batch</td></tr>
-                            <tr><td class="text-gray-500">Koneksi Device</td><td>USB, UART, EDL/QFIL, Download Mode, ISP/JTAG</td></tr>
-                            <tr><td class="text-gray-500">Platform Target</td><td>Android, iOS/iPadOS, KaiOS, BlackBerry/Symbian legacy, feature phone</td></tr>
-                            <tr><td class="text-gray-500">Output</td><td>File ekstraksi (.extr/.ufd), raw image, report, hash list</td></tr>
-                            <tr><td class="text-gray-500">Pasangan Analisa</td><td>Cellebrite Physical Analyzer</td></tr>
-                            <tr><td class="text-gray-500">Lisensi</td><td>Berlangganan (subscription) per modul &amp; per tahun</td></tr>
-                            <tr><td class="text-gray-500">Bahasan Laporan</td><td>PDF, XLSX, CSV, CASE/CAS, Arkham, dll.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <p class="text-xs text-gray-600 italic mt-6 max-w-3xl mx-auto text-center">
-                * Spesifikasi &amp; dukungan device bersifat dinamis mengikuti versi rilis Cellebrite. Hubungi kami untuk daftar
-                dukungan model terbaru dan konfigurasi lisensi yang tepat.
-            </p>
-        </div>
-    </section>
-
-    <!-- Training CTA -->
-    <section id="pelatihan" class="py-16 bg-[#0a0a0a] relative overflow-hidden">
-        <div class="absolute inset-0 grid-pattern opacity-20"></div>
-        <div class="relative max-w-4xl mx-auto px-4 text-center">
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20 mb-4">Learning by Doing &bull; Real-life Hands-on</span>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">Ingin bisa memakai <span class="gradient-text">UFED 4PC</span> langsung?</h2>
-            <p class="text-gray-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-                Modul <strong class="text-white">Mobile Forensics</strong> pada pelatihan Digital Neo Sistem mempraktikkan
-                siklus penuh: pengamanan device → ekstraksi UFED 4PC → analisa Physical Analyzer → laporan ahli.
-                Peserta berlatih dengan handset sungguhan dan skenario kasus nyata. Kami juga menyediakan
-                <strong class="text-white">lisensi resmi, instalasi, dan pendampingan lab</strong>.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20ingin%20ikut%20pelatihan%20Mobile%20Forensics%20(Cellebrite%20UFED%204PC)" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg text-white font-semibold" style="background:#25D366">
-                    <i data-lucide="phone-call" class="w-4 h-4"></i><span>Daftar Pelatihan via WhatsApp</span>
-                </a>
-                <a href="index.html#training" class="inline-flex items-center space-x-2 px-6 py-3 gradient-btn rounded-lg text-white font-medium">
-                    <i data-lucide="graduation-cap" class="w-4 h-4"></i><span>Lihat Semua Program Training</span>
-                </a>
             </div>
         </div>
     </section>
-
-    <!-- Related products -->
-    <section id="related" class="py-16 bg-[#111]">
+    <!-- Produk terkait -->
+    <section id="related" class="py-16 bg-[#0a0a0a]">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-10">
                 <h2 class="text-2xl font-bold text-white mb-2">Produk <span class="gradient-text">Terkait</span></h2>
-                <p class="text-gray-500 text-sm">Perangkat lain yang melengkapi alur kerja Cellebrite UFED 4PC di lab Anda.</p>
+                <p class="text-gray-500 text-sm">Perangkat lain yang melengkapi alur kerja Cellebrite UFED 4PC di laboratorium Anda.</p>
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                <a href="index.html#produk" class="glass rounded-xl p-5 block transition-all">
+                <a href="cellebrite-responder.html" class="glass rounded-xl p-5 block transition-all">
                     <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Cellebrite</span>
                     <h3 class="font-bold text-white text-sm mt-3 mb-1">Cellebrite Responder</h3>
                     <p class="text-gray-400 text-xs leading-relaxed">Aquisisi cepat di tempat kejadian (first responder).</p>
                 </a>
-                <a href="index.html#produk" class="glass rounded-xl p-5 block transition-all">
-                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Compelson</span>
-                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Fernico ZRT3</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Chip-off &amp; pembacaan memori IC langsung utk ekstraksi tingkat hardware.</p>
+                <a href="magnet-axiom.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Magnet Forensics</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Magnet AXIOM</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Investigasi computer &amp; mobile terintegrasi, artefak cloud.</p>
                 </a>
-                <a href="index.html#produk" class="glass rounded-xl p-5 block transition-all">
-                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">OFFGRID</span>
-                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Faraday Bags</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Pengamanan sinyal device bukti dari remote wipe (tamper-proof).</p>
-                </a>
-                <a href="index.html#produk" class="glass rounded-xl p-5 block transition-all">
+                <a href="oxygen-forensic-detective.html" class="glass rounded-xl p-5 block transition-all">
                     <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Oxygen Forensic</span>
                     <h3 class="font-bold text-white text-sm mt-3 mb-1">Oxygen Forensic Detective</h3>
-                    <p class="text-gray-400 text-xs leading-relaxed">Alternatif ekstraksi device, cloud, IoT &amp; backup.</p>
+                    <p class="text-gray-400 text-xs leading-relaxed">Ekstraksi device, cloud, IoT &amp; backup.</p>
+                </a>
+                <a href="msab-xry.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">MSAB</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">MSAB XRY</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Aquisisi &amp; analisa mobile, didukung banyak chipset.</p>
+                </a>
+                <a href="tableau-t35u-forensic-bridge.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">OpenText Tableau</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Tableau T35U Forensic Bridge</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">USB/SATA forensic bridge berkecepatan tinggi.</p>
+                </a>
+            </div>
+            <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mt-12 mb-5">Lainnya di kategori Mobile Forensic</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <a href="mobiledit-forensic.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20">Compelson</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">MOBILedit Forensic</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Ekstraksi phonebook, SMS, log &amp; multimedia.</p>
+                </a>
+                <a href="smartwatch-kit.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20">Compelson</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Smartwatch Kit</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Forensik smartwatch &amp; perangkat wearable.</p>
+                </a>
+                <a href="fernico-zrt3.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20">Fernico</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Fernico ZRT3</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Chip-off &amp; pembacaan memori IC langsung.</p>
+                </a>
+                <a href="paraben-device-seizure.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20">Paraben</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Paraben Device Seizure</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Aquisisi mobile legacy &amp; automotive.</p>
                 </a>
             </div>
             <div class="mt-10 text-center">
                 <a href="index.html#produk" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-white/10 text-gray-300 hover:border-[#00d68f]/40 hover:text-white transition-all font-medium">
-                    <i data-lucide="grid-3x3" class="w-4 h-4"></i><span>Lihat Katalog Produk Lengkap</span>
+                    <i data-lucide="grid-3x3" class="w-4 h-4"></i><span>Lihat Katalog Produk Lengkap (42 Perangkat)</span>
                 </a>
             </div>
         </div>
@@ -723,12 +631,15 @@ stage3 recovered_chatdb SHA256 f02d...51ce  (SQLite recovery)
                 </a>
 
                 <p class="text-gray-600 text-xs text-center">
-                    © 2024 PT Digital Neo Sistem. All rights reserved.
+                    &copy; 2024 PT Digital Neo Sistem. All rights reserved.
                 </p>
 
                 <div class="flex items-center space-x-4">
                     <a href="index.html" class="text-gray-600 hover:text-[#00d68f] text-xs transition-colors flex items-center space-x-1">
                         <i data-lucide="home" class="w-3 h-3"></i><span>Halaman Utama</span>
+                    </a>
+                    <a href="index.html#produk" class="text-gray-600 hover:text-[#00d68f] text-xs transition-colors flex items-center space-x-1">
+                        <i data-lucide="grid-3x3" class="w-3 h-3"></i><span>Katalog Produk</span>
                     </a>
                     <a href="https://digitalneo.id" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-[#00d68f] text-xs transition-colors flex items-center space-x-1">
                         <span>digitalneo.id</span>
@@ -741,28 +652,20 @@ stage3 recovered_chatdb SHA256 f02d...51ce  (SQLite recovery)
 
     <!-- JavaScript -->
     <script>
-        // Initialize Lucide icons
         lucide.createIcons();
 
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on links
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function () { mobileMenu.classList.toggle('active'); });
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () { mobileMenu.classList.remove('active'); });
             });
-        });
+        }
     </script>
 
     <!-- Floating WhatsApp -->
-    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20Cellebrite%20UFED%204PC" target="_blank" rel="noopener noreferrer"
+    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Cellebrite%20UFED%204PC" target="_blank" rel="noopener noreferrer"
        class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-black/40 hover:scale-110 transition-transform" style="background:#25D366" aria-label="Chat WhatsApp">
         <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
     </a>
