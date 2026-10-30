@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuix eDiscovery Platform - Detail Produk | Digital Neo Sistem</title>
+    <meta name="description" content="Nuix eDiscovery Platform (Nuix): pengertian, fitur, alur kerja, contoh kasus hands-on, spesifikasi, dan pengadaan/pelatihan bersama PT Digital Neo Sistem.">
+    <meta property="og:title" content="Nuix eDiscovery Platform - Detail Produk">
+    <meta property="og:description" content="Nuix eDiscovery Platform (Nuix): pengertian, fitur, alur kerja, contoh kasus hands-on, spesifikasi, dan pengadaan/pelatihan bersama PT Digital Neo Sistem.">
+    <meta property="og:type" content="article">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * { font-family: 'Inter', system-ui, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: #0a0a0a; color: white; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #00d68f, #00b4d8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(0, 214, 143, 0.3); }
+        .gradient-btn { background: linear-gradient(135deg, #00d68f, #00b4d8); }
+        .gradient-btn:hover { opacity: 0.9; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+
+        .grid-pattern {
+            background-image:
+                linear-gradient(rgba(0,214,143,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,214,143,0.05) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        .mobile-menu { display: none; }
+        .mobile-menu.active { display: block; }
+
+        .code-block {
+            background: #0d1117;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+            font-size: 0.78rem;
+            line-height: 1.65;
+            white-space: pre;
+            overflow-x: auto;
+        }
+        .spec-table th {
+            background: rgba(0, 214, 143, 0.08);
+            color: #00d68f;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .spec-table td, .spec-table th { padding: 0.7rem 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .spec-table tr:last-child td { border-bottom: none; }
+        .step-num {
+            width: 2.4rem; height: 2.4rem; border-radius: 9999px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; flex-shrink: 0;
+            background: linear-gradient(135deg, #00d68f, #00b4d8); color: #fff;
+        }
+        .toc-link { display:block; padding:.5rem .75rem; border-radius:.5rem; font-size:.8rem; color:#9ca3af; border:1px solid rgba(255,255,255,.07); }
+        .toc-link:hover { color:#fff; border-color:rgba(0,214,143,.4); background:rgba(0,214,143,.06); }
+    </style>
+</head>
+<body class="bg-[#0a0a0a] text-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/90 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 rounded-lg gradient-btn flex items-center justify-center">
+                        <i data-lucide="shield" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="text-base font-bold">
+                        <span class="text-white">Digital</span>
+                        <span class="text-[#00d68f]"> Neo</span>
+                        <span class="text-[#00b4d8] text-xs">.id</span>
+                    </span>
+                </a>
+
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="index.html#produk" class="text-sm text-gray-400 hover:text-white transition-colors">Produk</a>
+                    <a href="index.html#revolution" class="text-sm text-gray-400 hover:text-white transition-colors">Digital Revolution</a>
+                    <a href="index.html#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
+                    <a href="index.html#training" class="text-sm text-gray-400 hover:text-white transition-colors">Training</a>
+                    <a href="index.html#contact" class="text-sm text-gray-400 hover:text-white transition-colors">Contact</a>
+                    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%3A%20Nuix%20eDiscovery%20Platform%20%28Nuix%29.%20Mohon%20info%20harga%20%26%20penawarannya." target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg text-white text-sm font-medium flex items-center space-x-1.5" style="background:#25D366">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i><span>Minta Penawaran</span>
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-[#111] border-t border-white/5">
+            <div class="px-4 py-4 space-y-3">
+                <a href="index.html" class="block text-white text-sm font-semibold">&larr; Kembali ke Halaman Utama</a>
+                <a href="index.html#produk" class="block text-gray-300 text-sm">Produk</a>
+                <a href="index.html#training" class="block text-gray-300 text-sm">Training</a>
+                <a href="index.html#contact" class="block text-gray-300 text-sm">Contact</a>
+                <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Nuix%20eDiscovery%20Platform" target="_blank" rel="noopener noreferrer" class="block px-4 py-2 rounded-lg text-white text-sm font-medium text-center" style="background:#25D366">
+                    Minta Penawaran via WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero / Page Header -->
+    <section class="pt-28 pb-12 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-1/3 left-1/4 w-96 h-96 bg-[#00d68f]/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-[#00b4d8]/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="absolute inset-0 grid-pattern opacity-30"></div>
+
+        <div class="relative max-w-6xl mx-auto px-4">
+            <!-- Breadcrumb -->
+            <div class="flex flex-wrap items-center gap-2 text-xs text-gray-500 mb-8">
+                <a href="index.html" class="hover:text-[#00d68f] transition-colors flex items-center space-x-1">
+                    <i data-lucide="home" class="w-3.5 h-3.5"></i><span>Beranda</span>
+                </a>
+                <span>/</span>
+                <a href="index.html#produk" class="hover:text-[#00d68f] transition-colors">Produk</a>
+                <span>/</span>
+                <a href="index.html#produk" class="hover:text-[#00d68f] transition-colors">eDiscovery</a>
+                <span>/</span>
+                <span class="text-gray-300">Nuix eDiscovery Platform</span>
+            </div>
+
+            <div class="animate-fade-in-up">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">
+                        <i data-lucide="database" class="w-3.5 h-3.5"></i><span>Nuix</span>
+                    </span>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10">eDiscovery</span>
+                    <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-white/5 text-gray-300 border border-white/10">Platform eDiscovery/proses big data</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
+                    <span class="text-white">Nuix eDiscovery Platform</span>
+                </h1>
+
+                <p class="text-lg text-gray-400 max-w-3xl leading-relaxed mb-8">
+                    Nuix eDiscovery Platform memproses, mengindeks, men-de-dup, dan menganalisa kumpulan data sangat besar untuk litigasi dan investigasi, dengan performa processing yang menjadi ciri khas Nuix.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%3A%20Nuix%20eDiscovery%20Platform%20%28Nuix%29.%20Mohon%20info%20harga%20%26%20penawarannya." target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg text-white font-semibold" style="background:#25D366">
+                        <i data-lucide="send" class="w-4 h-4"></i><span>Minta Harga Nuix eDiscovery Platform</span>
+                    </a>
+                    <a href="index.html#training" class="inline-flex items-center space-x-2 px-6 py-3 gradient-btn rounded-lg text-white font-medium">
+                        <i data-lucide="graduation-cap" class="w-4 h-4"></i><span>Jadwal Pelatihan Hands-on</span>
+                    </a>
+                    <a href="index.html" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-white/10 text-gray-300 hover:border-[#00d68f]/40 hover:text-white transition-all font-medium">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i><span>Kembali ke Halaman Utama</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Overview -->
+    <section id="overview" class="py-16 bg-[#111]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+                        Apa itu <span class="gradient-text">Nuix eDiscovery Platform?</span>
+                    </h2>
+                    <div class="space-y-4 text-gray-400 leading-relaxed">
+                        <p><strong class="text-white">Nuix eDiscovery Platform</strong> adalah platform eDiscovery/proses big data dari <strong class="text-white">Nuix</strong> yang digunakan dalam proses investigasi digital forensik.</p>
+                        <p>Nuix eDiscovery Platform memproses, mengindeks, men-de-dup, dan menganalisa kumpulan data sangat besar untuk litigasi dan investigasi, dengan performa processing yang menjadi ciri khas Nuix.</p>
+                        <p>
+                            Dalam praktik sehari-hari, tool ini dipakai oleh laboratorium forensik, penegak hukum, tim
+                            <em>incident response</em> korporasi, konsultan digital forensik, serta penyidik internal untuk
+                            mempercepat pekerjaan akuisisi dan analisa bukti tanpa mengorbankan integritas data.
+                            Penggunaan yang tepat selalu diawali dengan penilaian kondisi barang bukti, pemilihan metode
+                            yang paling kecil dampaknya (<em>minimally invasive</em>), dan dokumentasi hasil yang rapi.
+                        </p>
+                        <p>
+                            Kami menyediakan Nuix eDiscovery Platform beserta lisensi/subscription, pendampingan instalasi, pelatihan
+                            hands-on berbasis studi kasus, hingga dukungan lanjutan saat tool digunakan pada perkara nyata.
+                        </p>
+                    </div>
+
+                    <div class="mt-8 glass rounded-xl p-6">
+                        <h3 class="text-white font-bold mb-4 flex items-center space-x-2">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-[#00d68f]"></i>
+                            <span>Fitur Utama Nuix eDiscovery Platform</span>
+                        </h3>
+                        <ul class="grid sm:grid-cols-2 gap-x-6 gap-y-3 text-sm text-gray-400">
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Parallel processing engine sangat cepat dengan load balancing</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>De-duplication near-exact &amp; fuzzy</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Technology Assisted Review (predictive coding) &amp; clustering</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Analytics: email threading, concept, sentiment, named entity</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Chain-of-custody logging dan audit trail</span>
+                            </li>
+                            <li class="flex items-start space-x-2.5">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                                <span>Produksi berformat standar (Reliance/BAT, loadfiles)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-6 glass rounded-xl p-6 border-l-4 !border-l-[#00b4d8]">
+                        <h3 class="text-white font-bold mb-2 flex items-center space-x-2">
+                            <i data-lucide="info" class="w-5 h-5 text-[#00b4d8]"></i>
+                            <span>Catatan penting</span>
+                        </h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Deskripsi, spesifikasi, dan contoh pada halaman ini bersifat edukatif untuk membantu pemilihan alat. Dukungan model perangkat, versi, fitur, serta harga mengikuti rilis resmi vendor — silakan hubungi kami untuk konfirmasi terkini.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="glass rounded-xl p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i data-lucide="scale" class="w-5 h-5 text-[#00d68f]"></i>
+                            <h4 class="text-white font-semibold text-sm">Tipe produk</h4>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed">Platform eDiscovery/proses big data</p>
+                    </div>
+                    <div class="glass rounded-xl p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i data-lucide="inbox" class="w-5 h-5 text-[#00d68f]"></i>
+                            <h4 class="text-white font-semibold text-sm">Kategori</h4>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed">eDiscovery</p>
+                    </div>
+                    <div class="glass rounded-xl p-5">
+                        <div class="flex items-center space-x-3 mb-2">
+                            <i data-lucide="users" class="w-5 h-5 text-[#00d68f]"></i>
+                            <h4 class="text-white font-semibold text-sm">Vendor</h4>
+                        </div>
+                        <p class="text-gray-400 text-xs leading-relaxed">Nuix (Australia)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Alur kerja -->
+    <section id="alur-kerja" class="py-16 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Alur Kerja <span class="gradient-text">Nuix eDiscovery Platform</span></h2>
+                <p class="text-gray-500 text-sm max-w-2xl mx-auto">Urutan pemakaian yang umum diterapkan di laboratorium agar hasil tetap <em>forensically sound</em> dan dapat dipertanggungjawabkan.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-x-10 gap-y-8 max-w-4xl mx-auto">
+            <div class="flex items-start space-x-4">
+                <div class="step-num">1</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Definisikan dataset &amp; kebijakan processing (OCR, translation, dedup).</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">2</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Import evidence sources (native/image/mailbox) + metadata.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">3</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Proses batch; monitor worker queue dan error handling.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">4</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Review: terapkan filter, TAR, dan issue-based coding.</p>
+                </div>
+            </div>
+            <div class="flex items-start space-x-4">
+                <div class="step-num">5</div>
+                <div class="pt-1">
+                    <p class="text-gray-300 text-sm leading-relaxed">Produksi dokumen + laporan analitik untuk tim hukum.</p>
+                </div>
+            </div>
+            </div>
+            <div class="mt-10 max-w-4xl mx-auto glass rounded-xl p-5">
+                <div class="flex items-start space-x-3">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-[#00d68f] flex-shrink-0 mt-0.5"></i>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Prinsip yang tidak boleh dilewatkan: <strong class="text-white">selalu kerjakan pada salinan (image), bukan barang bukti asli</strong>,
+                        gunakan write blocker saat mengakses media, verifikasi hash sebelum dan sesudah proses, serta catat setiap tindakan dalam formulir
+                        <em>chain of custody</em>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contoh penggunaan -->
+    <section id="contoh" class="py-16 bg-[#111]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20 mb-4">Studi Kasus Hands-on</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Contoh Penggunaan <span class="gradient-text">Nuix eDiscovery Platform</span></h2>
+                <p class="text-gray-500 text-sm max-w-2xl mx-auto">Dua skenario berikut menggambarkan cara tool ini dipakai pada investigasi nyata — mulai dari persiapan barang bukti sampai hasil yang dilaporkan ke penyidik.</p>
+            </div>
+            <div class="space-y-6">
+            <div class="glass rounded-2xl p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg gradient-btn text-white text-sm font-bold">1</span>
+                    <h3 class="text-white font-bold text-lg">Litigasi komersial — 12 juta dokumen</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5"><strong class="text-gray-200">Skenario:</strong> Sengketa distributor membutuhkan review cepat atas email &amp; file share.</p>
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Langkah Pengerjaan</p>
+                        <ol class="space-y-2 text-xs text-gray-400 leading-relaxed">
+<li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">1.</span><span>Import 12jt item dari PST, file server, dan backup.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">2.</span><span>Proses dengan OCR + email threading + dedup.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">3.</span><span>Terapkan TAR pada populasi hasil filter isu.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">4.</span><span>Produksi 48rb dokumen responsive dengan loadfile.</span></li>                        </ol>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Contoh Output / Laporan (ilustrasi)</p>
+                        <div class="code-block rounded-xl p-4 text-gray-300">Processing: 12.044.118 items in 62 jam (32 workers)
+Dedup removed: 3.102.447 | OCR pages: 4,1 jt
+Threads: 1.204 conversation groups
+TAR coverage: recall 0.94 / precision 0.81
+Production: PROD-001 (PDF+Natives+load.dat)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="glass rounded-2xl p-6 sm:p-8">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg gradient-btn text-white text-sm font-bold">2</span>
+                    <h3 class="text-white font-bold text-lg">Investigasi anti-fraud — chat &amp; email</h3>
+                </div>
+                <p class="text-gray-400 text-sm leading-relaxed mb-5"><strong class="text-gray-200">Skenario:</strong> Perlu menemukan percakapan collusion di antara jutaan item.</p>
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Langkah Pengerjaan</p>
+                        <ol class="space-y-2 text-xs text-gray-400 leading-relaxed">
+<li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">1.</span><span>Muat sumber email + chat + collaboration tools.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">2.</span><span>Analisa entitas bernama &amp; korelasi waktu.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">3.</span><span>Cluster topik terkait vendor &amp; tender.</span></li><li class="flex items-start space-x-2"><span class="text-[#00d68f] font-semibold text-xs mt-0.5">4.</span><span>Serahkan set prioritas ke tim forensik.</span></li>                        </ol>
+                    </div>
+                    <div>
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Contoh Output / Laporan (ilustrasi)</p>
+                        <div class="code-block rounded-xl p-4 text-gray-300">Sources: Exchange 6,2jt, Slack 1,9jt msg, Teams 840k
+Entity pairs flagged: 127 (vendor-buyer collusion patterns)
+Top doc set: 3.402 items (reviewed 100%)
+Deliverables: findings deck + evidence index</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+    <!-- Spesifikasi -->
+    <section id="spesifikasi" class="py-16 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-4 gap-8">
+                <div class="lg:col-span-3">
+                    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Spesifikasi &amp; <span class="gradient-text">Kemampuan</span></h2>
+                    <p class="text-gray-500 text-sm mb-6">Ringkasan kemampuan Nuix eDiscovery Platform yang paling relevan saat memilih alat untuk kebutuhan lab Anda.</p>
+                    <div class="glass rounded-xl overflow-hidden">
+                        <table class="spec-table w-full">
+                            <thead><tr><th>Aspek</th><th>Keterangan</th></tr></thead>
+                            <tbody>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Vendor</td><td class="text-gray-400 text-xs">Nuix (Australia)</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Fungsi</td><td class="text-gray-400 text-xs">Processing, analytics, review, production</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Skala data</td><td class="text-gray-400 text-xs">Puluhan TB hingga PB (tergantung infrastruktur)</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Format input</td><td class="text-gray-400 text-xs">Native files, images, mailbox, database, chat exports</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Output</td><td class="text-gray-400 text-xs">Load set, produksi (PDF/TIFF/native), laporan analitik</td></tr>
+                            <tr><td class="text-gray-200 font-medium text-xs w-1/3">Deployment</td><td class="text-gray-400 text-xs">On-prem, cloud, hybrid</td></tr>
+                                        </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-8 grid sm:grid-cols-2 gap-4">
+                        <div class="glass rounded-xl p-5">
+                            <h3 class="text-white font-semibold text-sm mb-2 flex items-center space-x-2"><i data-lucide="target" class="w-4 h-4 text-[#00d68f]"></i><span>Cocok Digunakan Untuk</span></h3>
+                            <ul class="space-y-2 text-xs text-gray-400">
+                                <li>&bull; Penegak hukum &amp; laboratorium forensik digital</li>
+                                <li>&bull; Tim incident response &amp; security korporasi</li>
+                                <li>&bull; Konsultan / praktisi digital forensik &amp; eDiscovery</li>
+                                <li>&bull; Investigasi internal (HR, anti-fraud, kepatuhan)</li>
+                            </ul>
+                        </div>
+                        <div class="glass rounded-xl p-5">
+                            <h3 class="text-white font-semibold text-sm mb-2 flex items-center space-x-2"><i data-lucide="package" class="w-4 h-4 text-[#00b4d8]"></i><span>Paket Pengadaan</span></h3>
+                            <ul class="space-y-2 text-xs text-gray-400">
+                                <li>&bull; Lisensi / subscription Nuix eDiscovery Platform</li>
+                                <li>&bull; Pendampingan instalasi &amp; konfigurasi awal</li>
+                                <li>&bull; Pelatihan hands-on (kelas atau onsite)</li>
+                                <li>&bull; Dukungan teknis &amp; pengadaaan aksesoris pendukung</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="glass rounded-xl p-5 sticky top-24">
+                        <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mb-3">Navigasi Halaman</p>
+                        <div class="space-y-2">
+                        <a href="#overview" class="toc-link">Overview</a>
+                        <a href="#alur-kerja" class="toc-link">Alur Kerja</a>
+                        <a href="#contoh" class="toc-link">Contoh Kasus</a>
+                        <a href="#spesifikasi" class="toc-link">Spesifikasi</a>
+                        <a href="#pelatihan" class="toc-link">Pelatihan</a>
+                        <a href="#related" class="toc-link">Produk Terkait</a>
+                        </div>
+                        <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20ingin%20menanyakan%20ketersediaan%20dan%20harga%20Nuix%20eDiscovery%20Platform%20%28Nuix%29." target="_blank" rel="noopener noreferrer" class="mt-5 w-full inline-flex items-center justify-center space-x-2 px-4 py-2.5 rounded-lg text-white text-sm font-medium" style="background:#25D366">
+                            <i data-lucide="send" class="w-4 h-4"></i><span>Tanya Harga &amp; Ketersediaan</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Pelatihan CTA -->
+    <section id="pelatihan" class="py-16 bg-[#111]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="glass rounded-2xl p-8 sm:p-10 relative overflow-hidden">
+                <div class="absolute -top-16 -right-16 w-64 h-64 bg-[#00d68f]/10 rounded-full blur-3xl"></div>
+                <div class="relative grid lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Ingin tim Anda mahir memakai <span class="gradient-text">Nuix eDiscovery Platform</span>?</h2>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-5">
+                            Program pelatihan <strong class="text-white">eDiscovery</strong> kami dirancang <em>learning by doing</em>: peserta membawa
+                            kasus nyata, mempraktikkan akuisisi sampai pelaporan, dan dibimbing menyusun chain of custody yang sah secara hukum.
+                            Tersedia kelas reguler, privat, maupun onsite di instansi/perusahaan Anda.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Hands-on study case</span>
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Sertifikat pelatihan</span>
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Kelas reguler / onsite</span>
+                            <span class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-gray-300">Pendampingan pasca-pelatihan</span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3">
+                        <a href="index.html#training" class="inline-flex items-center justify-center space-x-2 px-5 py-3 gradient-btn rounded-lg text-white font-medium">
+                            <i data-lucide="graduation-cap" class="w-4 h-4"></i><span>Lihat Program Training</span>
+                        </a>
+                        <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20ingin%20menjadwalkan%20pelatihan%20penggunaan%20Nuix%20eDiscovery%20Platform." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-lg text-white font-medium" style="background:#25D366">
+                            <i data-lucide="message-circle" class="w-4 h-4"></i><span>Jadwalkan Pelatihan</span>
+                        </a>
+                        <a href="index.html#produk" class="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-lg border border-white/10 text-gray-300 hover:border-[#00d68f]/40 hover:text-white transition-all font-medium">
+                            <i data-lucide="grid-3x3" class="w-4 h-4"></i><span>Kembali ke Katalog Produk</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Produk terkait -->
+    <section id="related" class="py-16 bg-[#0a0a0a]">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold text-white mb-2">Produk <span class="gradient-text">Terkait</span></h2>
+                <p class="text-gray-500 text-sm">Perangkat lain yang melengkapi alur kerja Nuix eDiscovery Platform di laboratorium Anda.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <a href="nuix-workstation.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Nuix</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Nuix Workstation</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Triase &amp; analisa big data forensik.</p>
+                </a>
+                <a href="encase-ediscovery.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">OpenText</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">EnCase eDiscovery</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Alur kerja eDiscovery terstandar EDRM.</p>
+                </a>
+                <a href="x1-distributed-discovery.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">X1</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">X1 Distributed Discovery</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Pengumpulan data terdistribusi lintas endpoint.</p>
+                </a>
+                <a href="forensic-email-collector.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">Metaspike</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">Forensic Email Collector</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Akuisisi mailbox (IMAP/API) dengan metadata utuh.</p>
+                </a>
+                <a href="x1-social-discovery.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00d68f]/10 text-[#00d68f] border border-[#00d68f]/20">X1</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">X1 Social Discovery</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Pengumpulan &amp; triase bukti media sosial.</p>
+                </a>
+            </div>
+            <p class="text-[11px] uppercase tracking-wider text-gray-500 font-semibold mt-12 mb-5">Lainnya di kategori eDiscovery</p>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                <a href="x1-search.html" class="glass rounded-xl p-5 block transition-all">
+                    <span class="text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#00b4d8]/10 text-[#00b4d8] border border-[#00b4d8]/20">X1</span>
+                    <h3 class="font-bold text-white text-sm mt-3 mb-1">X1 Search</h3>
+                    <p class="text-gray-400 text-xs leading-relaxed">Enterprise search &amp; collection cepat.</p>
+                </a>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="index.html#produk" class="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-white/10 text-gray-300 hover:border-[#00d68f]/40 hover:text-white transition-all font-medium">
+                    <i data-lucide="grid-3x3" class="w-4 h-4"></i><span>Lihat Katalog Produk Lengkap (42 Perangkat)</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-7 h-7 rounded-lg gradient-btn flex items-center justify-center">
+                        <i data-lucide="shield" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <span class="text-sm font-bold">
+                        <span class="text-white">Digital</span>
+                        <span class="text-[#00d68f]"> Neo</span>
+                        <span class="text-[#00b4d8] text-xs">.id</span>
+                    </span>
+                </a>
+
+                <p class="text-gray-600 text-xs text-center">
+                    &copy; 2024 PT Digital Neo Sistem. All rights reserved.
+                </p>
+
+                <div class="flex items-center space-x-4">
+                    <a href="index.html" class="text-gray-600 hover:text-[#00d68f] text-xs transition-colors flex items-center space-x-1">
+                        <i data-lucide="home" class="w-3 h-3"></i><span>Halaman Utama</span>
+                    </a>
+                    <a href="index.html#produk" class="text-gray-600 hover:text-[#00d68f] text-xs transition-colors flex items-center space-x-1">
+                        <i data-lucide="grid-3x3" class="w-3 h-3"></i><span>Katalog Produk</span>
+                    </a>
+                    <a href="https://digitalneo.id" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-[#00d68f] text-xs transition-colors flex items-center space-x-1">
+                        <span>digitalneo.id</span>
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        lucide.createIcons();
+
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        var mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function () { mobileMenu.classList.toggle('active'); });
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () { mobileMenu.classList.remove('active'); });
+            });
+        }
+    </script>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/628119443448?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20Nuix%20eDiscovery%20Platform" target="_blank" rel="noopener noreferrer"
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg shadow-black/40 hover:scale-110 transition-transform" style="background:#25D366" aria-label="Chat WhatsApp">
+        <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+    </a>
+</body>
+</html>
