@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    # 1. Clear out the destination folder (optional but recommended for a clean deploy)
+    # - rm -rf /home/YOUR_CPANEL_USERNAME/public_html/*
+    
+    # 2. Copy the entire repository content into your public folder
+    - /bin/cp -R * /home/kmmozxnb/public_html/digitalneoweb
